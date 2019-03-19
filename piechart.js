@@ -54,7 +54,7 @@ $(document).ready(function() {
 	// PieChart Option
 	// @desc All PieChart Options
 	var pieChartOption = {
-		responsive: !0,
+		responsive: true,
 		tooltips: percentageOption,
 		legend: legendOption
 	};
@@ -63,7 +63,7 @@ $(document).ready(function() {
 	// @params {id} is container Id <div id={id}>
 	// @params {_date} is STRING '11.5.2018'
 	// @params {plasticPaperCansArray} muse Be = [ Number ] Serial [ Plastic, Paper, Cans ]
-	var makeChart = function(id, _date, plasticPaperCansArray) {
+	var makeChart = function(id, _date, plasticPaperCansArray, description = []) {
 		// Set The Date
 		$('#' + id + '_date').html(_date);
 
@@ -74,6 +74,14 @@ $(document).ready(function() {
 					'<li class="text-left">' + chartDataListArr[index] + ' ' + data + '%</li>'
 				);
 		});
+
+		// Description Set
+		if (description.constructor === Array && description.length !== 0) {
+			description.map(function(des) {
+				makeDescriptionText(des).appendTo('#' + id + '_Container');
+			});
+		}
+		
 
 		return {
 			newChart: new Chart(document.getElementById(id).getContext('2d'), {
@@ -133,7 +141,7 @@ $(document).ready(function() {
 		},
 		{
 			id: 'myChart10',
-			paperPlasticCansOption: [ 83, 7, 10 ],
+			paperPlasticCansOption: [  18, 67, 15 ],
 			date: '24.8.2018',
 			description:
 				'In total 84.1 KG: 67% of paper and 18% ofCans and 15 % of plastics have been recycledwith the commitment and dedication from SilkRoad Trave'
