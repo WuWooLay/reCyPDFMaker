@@ -38,36 +38,41 @@ $(document).ready(function() {
 							image.push(canvas.toDataURL('image/png'));
 
 							// Sixth Page Start
-							html2canvas($('#container_line')[0]).then(function(canvas) {
+							html2canvas($('#container_table')[0]).then(function(canvas) {
 								// Sixth Page Done With CallBack
 								image.push(canvas.toDataURL('image/png'));
 
 								// Seventh Page Start
-								html2canvas($('#container_one')[0]).then(function(canvas) {
+								html2canvas($('#container_line')[0]).then(function(canvas) {
 									// Seventh Page Done With CallBack
 									image.push(canvas.toDataURL('image/png'));
 
 									// Eight Page Start
-									html2canvas($('#container_two')[0]).then(function(canvas) {
+									html2canvas($('#container_one')[0]).then(function(canvas) {
 										// Eight Page Done With CallBack
 										image.push(canvas.toDataURL('image/png'));
 
 										// Nine Page Start
-										html2canvas($('#container_three')[0]).then(function(canvas) {
+										html2canvas($('#container_two')[0]).then(function(canvas) {
 											// Nine Page Done With CallBack
 											image.push(canvas.toDataURL('image/png'));
-											
-											var doc = new jsPDF({
-												orientation: 'landscape'
-											});
 
-											image.map(function(img, index) {
-												doc.addImage(img, 'PNG', marginX, marginY);
-												if (index === image.length - 1) return;
-												doc.addPage();
-											});
+											// Ten Page Start
+											html2canvas($('#container_three')[0]).then(function(canvas) {
+												// Ten Page Done With CallBack
+												image.push(canvas.toDataURL('image/png'));
+												var doc = new jsPDF({
+													orientation: 'landscape'
+												});
 
-											doc.save('Test.pdf');
+												image.map(function(img, index) {
+													doc.addImage(img, 'PNG', marginX, marginY);
+													if (index === image.length - 1) return;
+													doc.addPage();
+												});
+
+												doc.save('Test.pdf');
+											});
 										});
 									});
 								});

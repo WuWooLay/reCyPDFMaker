@@ -46,3 +46,12 @@
 	position: relative;
 	padding: 0 0 0 15px;
 }
+
+
+.Figure_And_Data {
+	min-height: 602px;
+	background-color: #444;
+	background-image: url('../images/background04.jpg');
+	background-position: 50% 50%;
+	background-size: cover;
+}
